@@ -1,0 +1,17 @@
+services:
+  - type: worker
+    name: innerroom-yoga-bot
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: DATABASE_PATH
+        value: /var/data/bot.sqlite3
+    disk:
+      name: innerroom-data
+      mountPath: /var/data
+      sizeGB: 1
